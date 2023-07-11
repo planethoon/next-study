@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect } from "react";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import SubLayout from "../components/SubLayout";
 
 export async function getServerSideProps() {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import SubLayout from "../components/SubLayout";
 
 export default function CSR() {
