@@ -5,11 +5,37 @@ import { useRouter } from "next/router";
 
 export default function UsernameInfoSlug() {
   const router = useRouter();
-  const { username, info } = router.query;
+  const { username, info, uid } = router.query;
+  const [name, setName] = useState("John Doe");
+
+  useEffect(() => {
+    if (uid) {
+      fetch(`/api/user-info/${uid}`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setName(data.name);
+        });
+    }
+  }, [uid]);
+  // useEffect(() => {
+  //   fetch("/api/user")
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       setName(data.name);
+  //     });
+  // }, []);
 
   return (
     <div>
       {username}'s {info}
+      <h1>name: {name}</h1>
+      <h1>uid: {uid}</h1>
     </div>
   );
 }
