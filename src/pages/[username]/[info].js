@@ -7,6 +7,7 @@ export default function UsernameInfoSlug() {
   const router = useRouter();
   const { username, info, uid } = router.query;
   const [name, setName] = useState("John Doe");
+  const [status, setStatus] = useState(false);
 
   useEffect(() => {
     if (uid) {
@@ -17,6 +18,7 @@ export default function UsernameInfoSlug() {
         .then((data) => {
           console.log(data);
           setName(data.name);
+          setStatus(true);
         });
     }
   }, [uid]);
@@ -36,6 +38,7 @@ export default function UsernameInfoSlug() {
       {username}'s {info}
       <h1>name: {name}</h1>
       <h1>uid: {uid}</h1>
+      <h1>server call : {String(status)}</h1>
     </div>
   );
 }
